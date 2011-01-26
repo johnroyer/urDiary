@@ -1,18 +1,21 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2010-08-05T21:51:27
+# Project created by QtCreator 2011-01-02T17:14:03
 #
 #-------------------------------------------------
 
 QT       += core gui
 
-TARGET = urDiary
+TARGET = UrDiary
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    aboutwindow.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    aboutwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    aboutwindow.ui

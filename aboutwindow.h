@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::AboutWindow *ui;
+
+private slots:
+    void on_pushButton_released();
 };
 
 #endif // ABOUTWINDOW_H

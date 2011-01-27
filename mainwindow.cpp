@@ -18,5 +18,10 @@ void MainWindow::on_actionUrDiary_triggered()
 {
     //Show "about dialog"
     AboutWindow about;
-    about.show();
+    about.exec();
+}
+
+void MainWindow::on_actionClose_triggered()
+{
+    this->close();
 }

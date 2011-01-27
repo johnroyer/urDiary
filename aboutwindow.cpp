@@ -15,5 +15,5 @@ AboutWindow::~AboutWindow()
 
 void AboutWindow::on_pushButton_released()
 {
-    this->close();
+    this->done(0);
 }

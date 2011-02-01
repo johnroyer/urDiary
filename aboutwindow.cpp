@@ -13,7 +13,8 @@ AboutWindow::~AboutWindow()
     delete ui;
 }
 
-void AboutWindow::on_pushButton_released()
+
+void AboutWindow::on_closeButton_released()
 {
     this->done(0);
 }

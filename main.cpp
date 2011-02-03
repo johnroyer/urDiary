@@ -3,11 +3,16 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QFile>
+#include <QTextCodec>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
+
+    // Set text codec
+    QTextCodec::setCodecForCStrings( QTextCodec::codecForName( "UTF-8" ) );
+    QTextCodec::setCodecForTr( QTextCodec::codecForName( "UTF-8" ) );
 
     // Detect user home path
     QString path = QDir::homePath();

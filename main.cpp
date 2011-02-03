@@ -16,7 +16,8 @@ int main(int argc, char *argv[])
     QFile *db = new QFile(path + "urDiary.db");
     if( db->exists() == false ){
         if( QMessageBox::question(NULL,"DB", "DB not Found \nBuild a new one ?"
-                                  ,QMessageBox::Yes,QMessageBox::No) == true ){
+                                  ,QMessageBox::Yes
+                                  ,QMessageBox::No) == QMessageBox::Yes  ){
             // Create DB
         }else{
             QMessageBox::about(NULL, "Oops", "See you");

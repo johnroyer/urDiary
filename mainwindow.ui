@@ -31,7 +31,14 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QListWidget" name="listWidget1"/>
+         <widget class="QPlainTextEdit" name="plainTextEdit">
+          <property name="font">
+           <font>
+            <family>新細明體</family>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -49,7 +56,14 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QListWidget" name="listWidget2"/>
+         <widget class="QPlainTextEdit" name="plainTextEdit_2">
+          <property name="font">
+           <font>
+            <family>新細明體</family>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -67,7 +81,13 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QListWidget" name="listWidget"/>
+         <widget class="QPlainTextEdit" name="plainTextEdit_3">
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -85,7 +105,13 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QListWidget" name="listWidget_2"/>
+         <widget class="QPlainTextEdit" name="plainTextEdit_4">
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -167,7 +193,13 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QListWidget" name="listWidget_3"/>
+         <widget class="QPlainTextEdit" name="plainTextEdit_5">
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -175,6 +207,11 @@ p, li { white-space: pre-wrap; }
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <item>
          <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -185,7 +222,13 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QListWidget" name="listWidget_4"/>
+         <widget class="QPlainTextEdit" name="plainTextEdit_6">
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -203,7 +246,13 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QListWidget" name="listWidget_5"/>
+         <widget class="QPlainTextEdit" name="plainTextEdit_7">
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -221,7 +270,13 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item>
-         <widget class="QListWidget" name="listWidget_6"/>
+         <widget class="QPlainTextEdit" name="plainTextEdit_8">
+          <property name="font">
+           <font>
+            <pointsize>15</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

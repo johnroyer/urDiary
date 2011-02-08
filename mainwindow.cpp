@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "aboutwindow.h"
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -24,4 +27,8 @@ void MainWindow::on_actionUrDiary_triggered()
 void MainWindow::on_actionClose_triggered()
 {
     this->close();
+}
+
+void MainWindow::setDbQuery(QSqlQuery *query){
+    this->dbQuery = query;
 }

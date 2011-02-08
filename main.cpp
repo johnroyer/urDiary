@@ -4,11 +4,13 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QTextCodec>
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
 
     // Set text codec
     QTextCodec::setCodecForCStrings( QTextCodec::codecForName( "UTF-8" ) );
@@ -16,22 +18,22 @@ int main(int argc, char *argv[])
 
     // Detect user home path
     QString path = QDir::homePath();
+    QString dbPath = path + "/urDiary.db";
 
     // Find DB and build new DB if not found
-    QFile *db = new QFile(path + "urDiary.db");
-    if( db->exists() == false ){
-        if( QMessageBox::question(NULL,"DB", "DB not Found \nBuild a new one ?"
-                                  ,QMessageBox::Yes
-                                  ,QMessageBox::No) == QMessageBox::Yes  ){
-            // Create DB
-        }else{
-            QMessageBox::about(NULL, "Oops", "See you");
-            return 1;
-        }
-    }else{
-        // Open DB to read
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName( dbPath );
+
+    if( !db.open() ){
+        QMessageBox::critical(0,"Can not open database"
+                              ,"Unable to establish a database connection."
+                              ,QMessageBox::Ok);
+        return false;
     }
 
+    QSqlQuery query(db);
+    MainWindow w;
+    w.setDbQuery(&query);
     w.show();
 
     return a.exec();

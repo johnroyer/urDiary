@@ -5,6 +5,7 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QDate>
 
 namespace Ui {
     class MainWindow;
@@ -18,12 +19,16 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     void setDbQuery(QSqlQuery *query);
     ~MainWindow();
+    void disableForm();
+    void EnableForm();
 
 private:
     Ui::MainWindow *ui;
     QSqlQuery *dbQuery;
+    QDate diaryDate;
 
 private slots:
+    void on_pushButton_clicked();
     void on_actionClose_triggered();
     void on_actionUrDiary_triggered();
 };

@@ -18,14 +18,16 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     void setDbQuery(QSqlQuery *query);
+    void disableForm();
+    void EnableForm();
+    void initForm();
+    void saveForm();
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
     QSqlQuery *dbQuery;
-    QDate diaryDate;
-    void disableForm();
-    void EnableForm();
+    QDate currDate;
     int currId;
 
 private slots:

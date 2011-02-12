@@ -39,9 +39,11 @@ int main(int argc, char *argv[])
         return false;
     }
 
+    QSqlQuery query(db);
+
     // DB initialize
     if( dbExist == false ){
-        db.exec("create table diary ("
+        query.exec("create table diary ("
                 "id integer primary key AUTOINCREMENT,"
                 "date text, "
                 "field1 text, "
@@ -57,20 +59,21 @@ int main(int argc, char *argv[])
                 "fate text, "
                 "meet text, "
                 "specialDate text, "
-                "weather text ) ");
-        db.exec("create table sys ( "
+                "weather text, "
+                "getup text )");
+        query.exec("create table sys ( "
                 "id integer primary key AUTOINCREMENT, "
                 "var text, "
                 "val text )");
-        db.exec("insert into sys values('','dbversion','1')");
-        db.exec("insert into sys values('','start','"
-                + QDate::currentDate().toString("yyyyMMDD") +
+        bool result = query.exec("insert into sys (var, val) values('dbversion','1')");
+        result = query.exec("insert into sys (var, val) values('start','"
+                + QDate::currentDate().toString("yyyyMMdd") +
                 "')");
     }
 
-    QSqlQuery query(db);
     MainWindow w;
     w.setDbQuery(&query);
+    w.initForm();
     w.show();
 
     return a.exec();

@@ -5,6 +5,7 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDate>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -68,7 +69,65 @@ void MainWindow::EnableForm(){
     ui->lineEdit_weather->setEnabled(true);
 }
 
+void MainWindow::initForm(){
+    if( dbQuery != NULL ){
+        currDate = QDate::currentDate();
+        dbQuery->exec("select * from diary where date = " + currDate.toString("yyyyMMdd") );
+        if( dbQuery->next() == true ){
+            QMessageBox::about(0,"init",dbQuery->lastQuery());
+            ui->pushButton->setText(dbQuery->value(1).toString());
+            ui->plainTextEdit->setPlainText(dbQuery->value(2).toString());
+            ui->plainTextEdit_2->setPlainText(dbQuery->value((3)).toString());
+            ui->plainTextEdit_3->setPlainText(dbQuery->value((4)).toString());
+            ui->plainTextEdit_4->setPlainText(dbQuery->value((5)).toString());
+            ui->plainTextEdit_5->setPlainText(dbQuery->value((6)).toString());
+            ui->plainTextEdit_6->setPlainText(dbQuery->value((7)).toString());
+            ui->plainTextEdit_7->setPlainText(dbQuery->value((8)).toString());
+            ui->plainTextEdit_8->setPlainText(dbQuery->value((9)).toString());
+            ui->lineEdit_anniversary->setText(dbQuery->value(10).toString());
+            ui->lineEdit_birth->setText(dbQuery->value(11).toString());
+            ui->lineEdit_fate->setText(dbQuery->value(12).toString());
+            ui->lineEdit_meet->setText(dbQuery->value(13).toString());
+            ui->lineEdit_meet->setText(dbQuery->value(14).toString());
+            ui->lineEdit_specialDate->setText(dbQuery->value(15).toString());
+            ui->lineEdit_weather->setText(dbQuery->value(16).toString());
+            EnableForm();
+            ui->pushButton->setDisabled(true);
+        }
+    }
+}
+
+void MainWindow::saveForm(){
+    dbQuery->exec("update diary set "
+                  " field1 = '" + ui->plainTextEdit->toPlainText() + "'"
+                  " field2 = '" + ui->plainTextEdit_2->toPlainText() + "'"
+                  " field3 = '" + ui->plainTextEdit_3->toPlainText() + "'"
+                  " field4 = '" + ui->plainTextEdit_4->toPlainText() + "'"
+                  " field5 = '" + ui->plainTextEdit_5->toPlainText() + "'"
+                  " field6 = '" + ui->plainTextEdit_6->toPlainText() + "'"
+                  " field7 = '" + ui->plainTextEdit_7->toPlainText() + "'"
+                  " field8 = '" + ui->plainTextEdit_8->toPlainText() + "'"
+                  " anniversary = '" + ui->lineEdit_anniversary->text() + "'"
+                  " birth = '" + ui->lineEdit_birth->text() + "'"
+                  " fate = '" + ui->lineEdit_fate->text() + "'"
+                  " meet = '" + ui->lineEdit_meet->text() + "'"
+                  " specialDate = '"+ ui->lineEdit_specialDate->text() + "'"
+                  " weather = '" + ui->lineEdit_weather->text() + "'"
+                  " where date = " + currDate.toString("yyyyMMdd") );
+    QMessageBox::about(0,"save info",dbQuery->lastQuery());
+}
+
 void MainWindow::on_pushButton_clicked()
 {
-    // Check the date, update DB and ui
+    // Create new data and enable all form
+    QString currTime = QTime::currentTime().toString("hh:mm");
+    bool res = dbQuery->exec("insert into diary "
+                             "(date, getup) "
+                             "values ('" + currDate.toString("yyyyMMdd") + "','" + currTime + "')");
+    QMessageBox::about(0,"Result",dbQuery->lastQuery());
+    if( res == true ){
+        ui->pushButton->setDisabled(true);
+        ui->pushButton->setText(currTime);
+        EnableForm();
+    }
 }

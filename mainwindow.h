@@ -31,6 +31,7 @@ private:
     int currId;
 
 private slots:
+    void on_actionSave_triggered();
     void on_pushButton_clicked();
     void on_actionClose_triggered();
     void on_actionUrDiary_triggered();

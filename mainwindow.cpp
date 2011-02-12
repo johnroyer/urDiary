@@ -99,23 +99,25 @@ void MainWindow::initForm(){
 }
 
 void MainWindow::saveForm(){
-    dbQuery->exec("update diary set "
-                  " field1 = '" + ui->plainTextEdit->toPlainText() + "'"
-                  " field2 = '" + ui->plainTextEdit_2->toPlainText() + "'"
-                  " field3 = '" + ui->plainTextEdit_3->toPlainText() + "'"
-                  " field4 = '" + ui->plainTextEdit_4->toPlainText() + "'"
-                  " field5 = '" + ui->plainTextEdit_5->toPlainText() + "'"
-                  " field6 = '" + ui->plainTextEdit_6->toPlainText() + "'"
-                  " field7 = '" + ui->plainTextEdit_7->toPlainText() + "'"
-                  " field8 = '" + ui->plainTextEdit_8->toPlainText() + "'"
-                  " anniversary = '" + ui->lineEdit_anniversary->text() + "'"
-                  " birth = '" + ui->lineEdit_birth->text() + "'"
-                  " fate = '" + ui->lineEdit_fate->text() + "'"
-                  " meet = '" + ui->lineEdit_meet->text() + "'"
-                  " specialDate = '"+ ui->lineEdit_specialDate->text() + "'"
-                  " weather = '" + ui->lineEdit_weather->text() + "'"
+    bool stat = dbQuery->exec("update diary set "
+                  " field1 = '" + ui->plainTextEdit->toPlainText() + "', "
+                  " field2 = '" + ui->plainTextEdit_2->toPlainText() + "', "
+                  " field3 = '" + ui->plainTextEdit_3->toPlainText() + "', "
+                  " field4 = '" + ui->plainTextEdit_4->toPlainText() + "', "
+                  " field5 = '" + ui->plainTextEdit_5->toPlainText() + "', "
+                  " field6 = '" + ui->plainTextEdit_6->toPlainText() + "', "
+                  " field7 = '" + ui->plainTextEdit_7->toPlainText() + "', "
+                  " field8 = '" + ui->plainTextEdit_8->toPlainText() + "', "
+                  " anniversary = '" + ui->lineEdit_anniversary->text() + "', "
+                  " birth = '" + ui->lineEdit_birth->text() + "', "
+                  " fate = '" + ui->lineEdit_fate->text() + "', "
+                  " meet = '" + ui->lineEdit_meet->text() + "', "
+                  " specialDate = '"+ ui->lineEdit_specialDate->text() + "', "
+                  " weather = '" + ui->lineEdit_weather->text() + "' "
                   " where date = " + currDate.toString("yyyyMMdd") );
-    QMessageBox::about(0,"save info",dbQuery->lastQuery());
+    if( stat == false){
+        QMessageBox::about(0,"save info","Failed to save \n " + dbQuery->lastQuery() );
+    }
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -131,4 +133,9 @@ void MainWindow::on_pushButton_clicked()
         ui->pushButton->setText(currTime);
         EnableForm();
     }
+}
+
+void MainWindow::on_actionSave_triggered()
+{
+    saveForm();
 }

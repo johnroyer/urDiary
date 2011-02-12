@@ -74,8 +74,8 @@ void MainWindow::initForm(){
         currDate = QDate::currentDate();
         dbQuery->exec("select * from diary where date = " + currDate.toString("yyyyMMdd") );
         if( dbQuery->next() == true ){
-            QMessageBox::about(0,"init",dbQuery->lastQuery());
-            ui->pushButton->setText(dbQuery->value(1).toString());
+//            QMessageBox::about(0,"init",dbQuery->lastQuery());
+//            ui->pushButton->setText(dbQuery->value(1).toString());
             ui->plainTextEdit->setPlainText(dbQuery->value(2).toString());
             ui->plainTextEdit_2->setPlainText(dbQuery->value((3)).toString());
             ui->plainTextEdit_3->setPlainText(dbQuery->value((4)).toString());
@@ -88,11 +88,12 @@ void MainWindow::initForm(){
             ui->lineEdit_birth->setText(dbQuery->value(11).toString());
             ui->lineEdit_fate->setText(dbQuery->value(12).toString());
             ui->lineEdit_meet->setText(dbQuery->value(13).toString());
-            ui->lineEdit_meet->setText(dbQuery->value(14).toString());
-            ui->lineEdit_specialDate->setText(dbQuery->value(15).toString());
-            ui->lineEdit_weather->setText(dbQuery->value(16).toString());
+            ui->lineEdit_specialDate->setText(dbQuery->value(14).toString());
+            ui->lineEdit_weather->setText(dbQuery->value(15).toString());
             EnableForm();
+            ui->pushButton->setText(dbQuery->value(16).toString());
             ui->pushButton->setDisabled(true);
+            ui->label_currDate->setText(currDate.toString("<center> yyyy 年 M 月 dd 日 </center>"));
         }
     }
 }

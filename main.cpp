@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     QString path = QDir::homePath() + "/";
     QString dbPath = path + "urDiary.db";
     dbPath = QDir::toNativeSeparators(dbPath);
-    QMessageBox::about(0,"123",dbPath);
+//    QMessageBox::about(0,"123",dbPath);
 
     // Find DB and build new DB if not found
     QFile file(dbPath);

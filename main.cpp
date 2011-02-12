@@ -17,10 +17,18 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForTr( QTextCodec::codecForName( "UTF-8" ) );
 
     // Detect user home path
-    QString path = QDir::homePath() + "/";
-    QString dbPath = path + "urDiary.db";
+    QString sep = QDir::separator();
+    QString dbPath = QDir::homePath() + sep + "urDiary.db";
     dbPath = QDir::toNativeSeparators(dbPath);
 //    QMessageBox::about(0,"123",dbPath);
+
+    // Add library path
+    a.addLibraryPath(a.applicationDirPath());
+    a.addLibraryPath(a.applicationDirPath() + sep + "sqldrivers");
+//    QString tmp;
+//    foreach(tmp, a.libraryPaths()){
+//        QMessageBox::about(0,"lib",tmp);
+//    }
 
     // Find DB and build new DB if not found
     QFile file(dbPath);
@@ -34,7 +42,9 @@ int main(int argc, char *argv[])
 
     if( !db.open() ){
         QMessageBox::critical(0,"Can not open database"
-                              ,"Unable to establish a database connection."
+                              ,"Unable to establish a database connection. \n"
+                              "Path: " + dbPath + "\n"
+                              "Error: " + db.lastError().text()
                               ,QMessageBox::Ok);
         return false;
     }

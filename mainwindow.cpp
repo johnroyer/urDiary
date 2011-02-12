@@ -127,7 +127,7 @@ void MainWindow::on_pushButton_clicked()
     bool res = dbQuery->exec("insert into diary "
                              "(date, getup) "
                              "values ('" + currDate.toString("yyyyMMdd") + "','" + currTime + "')");
-    QMessageBox::about(0,"Result",dbQuery->lastQuery());
+    //QMessageBox::about(0,"Result",dbQuery->lastQuery());
     if( res == true ){
         ui->pushButton->setDisabled(true);
         ui->pushButton->setText(currTime);

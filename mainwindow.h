@@ -21,7 +21,8 @@ public:
     void disableForm();
     void EnableForm();
     void initForm();
-    void saveForm();
+    int saveForm();
+    void showInStatusBar(QString message);
     ~MainWindow();
 
 private:

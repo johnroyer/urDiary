@@ -98,7 +98,7 @@ void MainWindow::initForm(){
     }
 }
 
-void MainWindow::saveForm(){
+int MainWindow::saveForm(){
     bool stat = dbQuery->exec("update diary set "
                   " field1 = '" + ui->plainTextEdit->toPlainText() + "', "
                   " field2 = '" + ui->plainTextEdit_2->toPlainText() + "', "
@@ -116,8 +116,10 @@ void MainWindow::saveForm(){
                   " weather = '" + ui->lineEdit_weather->text() + "' "
                   " where date = " + currDate.toString("yyyyMMdd") );
     if( stat == false){
-        QMessageBox::about(0,"save info","Failed to save \n " + dbQuery->lastQuery() );
+//        QMessageBox::about(0,"save info","Failed to save \n " + dbQuery->lastQuery() );
+        return 1;
     }
+    return 0;
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -137,5 +139,14 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_actionSave_triggered()
 {
-    saveForm();
+    if( saveForm() == 0 ){
+        showInStatusBar("Saved !");
+    }else{
+        showInStatusBar("Failed to save");
+        QMessageBox::about(0,"Failed to save",dbQuery->lastError().text());
+    }
+}
+
+void MainWindow::showInStatusBar(QString message){
+    statusBar()->showMessage(message, 2000);
 }

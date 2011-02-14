@@ -93,9 +93,9 @@ void MainWindow::initForm(){
             EnableForm();
             ui->pushButton->setText(dbQuery->value(16).toString());
             ui->pushButton->setDisabled(true);
-            ui->label_currDate->setText(currDate.toString("<center> yyyy 年 M 月 dd 日 </center>"));
         }
     }
+    ui->label_currDate->setText(currDate.toString("<center> yyyy 年 M 月 dd 日 </center>"));
 }
 
 int MainWindow::saveForm(){
@@ -133,6 +133,8 @@ void MainWindow::on_pushButton_clicked()
     if( res == true ){
         ui->pushButton->setDisabled(true);
         ui->pushButton->setText(currTime);
+        currDate = QDate::currentDate();
+        ui->label_currDate->setText(currDate.toString("<center> yyyy 年 M 月 dd 日 </center>"));
         EnableForm();
     }
 }

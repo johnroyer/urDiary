@@ -16,6 +16,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    if( formModified == true ){
+        saveForm();
+    }
     delete ui;
 }
 
@@ -117,6 +120,7 @@ int MainWindow::saveForm(){
                   " where date = " + currDate.toString("yyyyMMdd") );
     if( stat == false){
 //        QMessageBox::about(0,"save info","Failed to save \n " + dbQuery->lastQuery() );
+        formModified = false;
         return 1;
     }
     return 0;

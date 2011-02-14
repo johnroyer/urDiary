@@ -22,6 +22,7 @@ public:
     void EnableForm();
     void initForm();
     int saveForm();
+    bool formModified;
     void showInStatusBar(QString message);
     ~MainWindow();
 

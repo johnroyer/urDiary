@@ -1,0 +1,11 @@
+<!DOCTYPE RCC><RCC version="1.0">
+ <qresource>
+     <file>res/left1.png</file>
+     <file>res/left2.png</file>
+     <file>res/left3.png</file>
+     <file>res/right1.png</file>
+     <file>res/right2.png</file>
+     <file>res/right3.png</file>
+     <file>res/mid.png</file>
+ </qresource>
+ </RCC>

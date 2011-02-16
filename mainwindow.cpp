@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    currDate = QDate::currentDate();
 }
 
 MainWindow::~MainWindow()
@@ -55,7 +56,7 @@ void MainWindow::disableForm(){
     ui->lineEdit_weather->setDisabled(true);
 }
 
-void MainWindow::EnableForm(){
+void MainWindow::enableForm(){
     ui->plainTextEdit->setEnabled(true);
     ui->plainTextEdit_2->setEnabled(true);
     ui->plainTextEdit_3->setEnabled(true);
@@ -74,7 +75,7 @@ void MainWindow::EnableForm(){
 
 void MainWindow::initForm(){
     if( dbQuery != NULL ){
-        currDate = QDate::currentDate();
+//        currDate = QDate::currentDate();
         dbQuery->exec("select * from diary where date = " + currDate.toString("yyyyMMdd") );
         if( dbQuery->next() == true ){
 //            QMessageBox::about(0,"init",dbQuery->lastQuery());
@@ -93,9 +94,48 @@ void MainWindow::initForm(){
             ui->lineEdit_meet->setText(dbQuery->value(13).toString());
             ui->lineEdit_specialDate->setText(dbQuery->value(14).toString());
             ui->lineEdit_weather->setText(dbQuery->value(15).toString());
-            EnableForm();
+            enableForm();
             ui->pushButton->setText(dbQuery->value(16).toString());
             ui->pushButton->setDisabled(true);
+        }else{
+            if( currDate > QDate::currentDate() ){
+                // Can not edit diary in the future
+                ui->plainTextEdit->setPlainText("");
+                ui->plainTextEdit_2->setPlainText("");
+                ui->plainTextEdit_3->setPlainText("");
+                ui->plainTextEdit_4->setPlainText("");
+                ui->plainTextEdit_5->setPlainText("");
+                ui->plainTextEdit_6->setPlainText("");
+                ui->plainTextEdit_7->setPlainText("");
+                ui->plainTextEdit_8->setPlainText("");
+                ui->lineEdit_anniversary->setText("");
+                ui->lineEdit_birth->setText("");
+                ui->lineEdit_fate->setText("");
+                ui->lineEdit_meet->setText("");
+                ui->lineEdit_specialDate->setText("");
+                ui->lineEdit_weather->setText("");
+                disableForm();
+                ui->pushButton->setText("我起床了");
+                ui->pushButton->setDisabled(true);
+            }else{
+                ui->plainTextEdit->setPlainText("");
+                ui->plainTextEdit_2->setPlainText("");
+                ui->plainTextEdit_3->setPlainText("");
+                ui->plainTextEdit_4->setPlainText("");
+                ui->plainTextEdit_5->setPlainText("");
+                ui->plainTextEdit_6->setPlainText("");
+                ui->plainTextEdit_7->setPlainText("");
+                ui->plainTextEdit_8->setPlainText("");
+                ui->lineEdit_anniversary->setText("");
+                ui->lineEdit_birth->setText("");
+                ui->lineEdit_fate->setText("");
+                ui->lineEdit_meet->setText("");
+                ui->lineEdit_specialDate->setText("");
+                ui->lineEdit_weather->setText("");
+                disableForm();
+                ui->pushButton->setText("我起床了");
+                ui->pushButton->setEnabled(true);
+            }
         }
     }
     ui->label_currDate->setText(currDate.toString("<center> yyyy 年 M 月 dd 日 </center>"));
@@ -139,7 +179,7 @@ void MainWindow::on_pushButton_clicked()
         ui->pushButton->setText(currTime);
         currDate = QDate::currentDate();
         ui->label_currDate->setText(currDate.toString("<center> yyyy 年 M 月 dd 日 </center>"));
-        EnableForm();
+        enableForm();
     }
 }
 
@@ -155,4 +195,47 @@ void MainWindow::on_actionSave_triggered()
 
 void MainWindow::showInStatusBar(QString message){
     statusBar()->showMessage(message, 2000);
+}
+
+void MainWindow::on_pushButton_Today_clicked()
+{
+    currDate = QDate::currentDate();
+    initForm();
+}
+
+void MainWindow::on_pushButton_nextDay_clicked()
+{
+    currDate = currDate.addDays(1);
+//    QMessageBox::about(0,"date", currDate.toString("<center> yyyy 年 M 月 dd 日 </center>") );
+    initForm();
+}
+
+void MainWindow::on_pushButton_PrevDay_clicked()
+{
+    currDate = currDate.addDays(-1);
+    initForm();
+}
+
+void MainWindow::on_pushButton_PrevMonth_clicked()
+{
+    currDate = currDate.addMonths(-1);
+    initForm();
+}
+
+void MainWindow::on_pushButton_prevYear_clicked()
+{
+    currDate = currDate.addYears(-1);
+    initForm();
+}
+
+void MainWindow::on_pushButton_nextMonth_clicked()
+{
+    currDate = currDate.addMonths(1);
+    initForm();
+}
+
+void MainWindow::on_pushButton_nextYear_clicked()
+{
+    currDate = currDate.addYears(1);
+    initForm();
 }

@@ -19,7 +19,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     void setDbQuery(QSqlQuery *query);
     void disableForm();
-    void EnableForm();
+    void enableForm();
     void initForm();
     int saveForm();
     bool formModified;
@@ -33,6 +33,13 @@ private:
     int currId;
 
 private slots:
+    void on_pushButton_nextYear_clicked();
+    void on_pushButton_nextMonth_clicked();
+    void on_pushButton_prevYear_clicked();
+    void on_pushButton_PrevMonth_clicked();
+    void on_pushButton_PrevDay_clicked();
+    void on_pushButton_nextDay_clicked();
+    void on_pushButton_Today_clicked();
     void on_actionSave_triggered();
     void on_pushButton_clicked();
     void on_actionClose_triggered();

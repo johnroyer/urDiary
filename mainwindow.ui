@@ -382,10 +382,10 @@ p, li { white-space: pre-wrap; }
       <item row="0" column="1">
        <widget class="QPushButton" name="pushButton_prevYear">
         <property name="toolTip">
-         <string>Prev Year</string>
+         <string>去年</string>
         </property>
         <property name="whatsThis">
-         <string>Prev Year</string>
+         <string>去年</string>
         </property>
         <property name="text">
          <string/>
@@ -400,15 +400,18 @@ p, li { white-space: pre-wrap; }
           <height>32</height>
          </size>
         </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="0" column="2">
        <widget class="QPushButton" name="pushButton_PrevMonth">
         <property name="toolTip">
-         <string>Prev Month</string>
+         <string>上個月</string>
         </property>
         <property name="whatsThis">
-         <string>Prev Month</string>
+         <string>上個月</string>
         </property>
         <property name="text">
          <string/>
@@ -423,15 +426,18 @@ p, li { white-space: pre-wrap; }
           <height>32</height>
          </size>
         </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="0" column="3">
        <widget class="QPushButton" name="pushButton_PrevDay">
         <property name="toolTip">
-         <string>Prev Day</string>
+         <string>昨天</string>
         </property>
         <property name="whatsThis">
-         <string>Prev Day</string>
+         <string>昨天</string>
         </property>
         <property name="text">
          <string/>
@@ -446,15 +452,18 @@ p, li { white-space: pre-wrap; }
           <height>32</height>
          </size>
         </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="0" column="4">
        <widget class="QPushButton" name="pushButton_Today">
         <property name="toolTip">
-         <string>Today</string>
+         <string>今天</string>
         </property>
         <property name="whatsThis">
-         <string>Today</string>
+         <string>今天</string>
         </property>
         <property name="text">
          <string/>
@@ -469,15 +478,18 @@ p, li { white-space: pre-wrap; }
           <height>32</height>
          </size>
         </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="0" column="5">
        <widget class="QPushButton" name="pushButton_nextDay">
         <property name="toolTip">
-         <string>Next Day</string>
+         <string>明天</string>
         </property>
         <property name="whatsThis">
-         <string>Next Day</string>
+         <string>明天</string>
         </property>
         <property name="text">
          <string/>
@@ -492,15 +504,18 @@ p, li { white-space: pre-wrap; }
           <height>32</height>
          </size>
         </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="0" column="6">
        <widget class="QPushButton" name="pushButton_nextMonth">
         <property name="toolTip">
-         <string>Next Month</string>
+         <string>下個月</string>
         </property>
         <property name="whatsThis">
-         <string>Next Month</string>
+         <string>下個月</string>
         </property>
         <property name="text">
          <string/>
@@ -515,15 +530,18 @@ p, li { white-space: pre-wrap; }
           <height>32</height>
          </size>
         </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="0" column="7">
        <widget class="QPushButton" name="pushButton_nextYear">
         <property name="toolTip">
-         <string>Next Year</string>
+         <string>明年</string>
         </property>
         <property name="whatsThis">
-         <string>Next Year</string>
+         <string>明年</string>
         </property>
         <property name="text">
          <string/>
@@ -537,6 +555,9 @@ p, li { white-space: pre-wrap; }
           <width>32</width>
           <height>32</height>
          </size>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

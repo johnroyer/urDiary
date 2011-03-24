@@ -206,7 +206,6 @@ void MainWindow::on_pushButton_Today_clicked()
 void MainWindow::on_pushButton_nextDay_clicked()
 {
     currDate = currDate.addDays(1);
-//    QMessageBox::about(0,"date", currDate.toString("<center> yyyy 年 M 月 dd 日 </center>") );
     initForm();
 }
 
@@ -237,5 +236,17 @@ void MainWindow::on_pushButton_nextMonth_clicked()
 void MainWindow::on_pushButton_nextYear_clicked()
 {
     currDate = currDate.addYears(1);
+    initForm();
+}
+
+void MainWindow::on_actionNextDay_triggered()
+{
+    currDate = currDate.addDays(1);
+    initForm();
+}
+
+void MainWindow::on_actionPrevDay_triggered()
+{
+    currDate = currDate.addDays(-1);
     initForm();
 }

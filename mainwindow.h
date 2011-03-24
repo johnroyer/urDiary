@@ -33,6 +33,8 @@ private:
     int currId;
 
 private slots:
+    void on_actionPrevDay_triggered();
+    void on_actionNextDay_triggered();
     void on_pushButton_nextYear_clicked();
     void on_pushButton_nextMonth_clicked();
     void on_pushButton_prevYear_clicked();

@@ -571,7 +571,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>785</width>
-     <height>18</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -592,6 +592,9 @@ p, li { white-space: pre-wrap; }
      <string>搜尋</string>
     </property>
     <addaction name="action"/>
+    <addaction name="separator"/>
+    <addaction name="actionNextDay"/>
+    <addaction name="actionPrevDay"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menu"/>
@@ -600,10 +603,13 @@ p, li { white-space: pre-wrap; }
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="mainToolBar">
    <property name="enabled">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="movable">
     <bool>false</bool>
+   </property>
+   <property name="floatable">
+    <bool>true</bool>
    </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
@@ -642,6 +648,22 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="shortcut">
     <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionNextDay">
+   <property name="text">
+    <string>明天</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Right</string>
+   </property>
+  </action>
+  <action name="actionPrevDay">
+   <property name="text">
+    <string>昨天</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Left</string>
    </property>
   </action>
  </widget>

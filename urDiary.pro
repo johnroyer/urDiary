@@ -22,3 +22,5 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     img.qrc
+
+RC_FILE += app.qrc

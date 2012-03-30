@@ -12,13 +12,19 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    aboutwindow.cpp
+    aboutwindow.cpp \
+    searchdialog.cpp
 
 HEADERS  += mainwindow.h \
-    aboutwindow.h
+    aboutwindow.h \
+    searchdialog.h
 
 FORMS    += mainwindow.ui \
-    aboutwindow.ui
+    aboutwindow.ui \
+    searchdialog.ui
 
 RESOURCES += \
     img.qrc
+
+
+

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "aboutwindow.h"
+#include "searchdialog.h"
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -238,4 +239,10 @@ void MainWindow::on_pushButton_nextYear_clicked()
 {
     currDate = currDate.addYears(1);
     initForm();
+}
+
+void MainWindow::on_action_triggered()
+{
+    SearchDialog *search = new SearchDialog(this, this->dbQuery);
+    search->show();
 }

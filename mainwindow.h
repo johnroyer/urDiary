@@ -44,6 +44,7 @@ private slots:
     void on_pushButton_clicked();
     void on_actionClose_triggered();
     void on_actionUrDiary_triggered();
+    void on_action_triggered();
 };
 
 #endif // MAINWINDOW_H

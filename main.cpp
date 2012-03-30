@@ -77,9 +77,10 @@ int main(int argc, char *argv[])
     }
 
     MainWindow w;
-    w.setDbQuery(&query);
+    w.setDb(&db, &query);
     w.initForm();
     w.show();
 
+    db.close();
     return a.exec();
 }

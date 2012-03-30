@@ -36,7 +36,7 @@ void MainWindow::on_actionClose_triggered()
     this->close();
 }
 
-void MainWindow::setDbQuery(QSqlQuery *query){
+void MainWindow::setDb(QSqlDatabase *conn, QSqlQuery *query){
     this->dbQuery = query;
 }
 
@@ -243,6 +243,6 @@ void MainWindow::on_pushButton_nextYear_clicked()
 
 void MainWindow::on_action_triggered()
 {
-    SearchDialog *search = new SearchDialog(this, this->dbQuery);
+    SearchDialog *search = new SearchDialog(this, this->dbConn);
     search->show();
 }

@@ -17,7 +17,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    void setDbQuery(QSqlQuery *query);
+    void setDb(QSqlDatabase *conn, QSqlQuery *query);
     void disableForm();
     void enableForm();
     void initForm();
@@ -28,6 +28,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QSqlDatabase *dbConn;
     QSqlQuery *dbQuery;
     QDate currDate;
     int currId;

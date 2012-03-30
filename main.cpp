@@ -20,15 +20,10 @@ int main(int argc, char *argv[])
     QString sep = QDir::separator();
     QString dbPath = QDir::homePath() + sep + "urDiary.db";
     dbPath = QDir::toNativeSeparators(dbPath);
-//    QMessageBox::about(0,"123",dbPath);
 
     // Add library path
     a.addLibraryPath(a.applicationDirPath());
     a.addLibraryPath(a.applicationDirPath() + sep + "sqldrivers");
-//    QString tmp;
-//    foreach(tmp, a.libraryPaths()){
-//        QMessageBox::about(0,"lib",tmp);
-//    }
 
     // Find DB and build new DB if not found
     QFile file(dbPath);
@@ -46,7 +41,7 @@ int main(int argc, char *argv[])
                               "Path: " + dbPath + "\n"
                               "Error: " + db.lastError().text()
                               ,QMessageBox::Ok);
-        return false;
+        return 1;
     }
 
     QSqlQuery query(db);

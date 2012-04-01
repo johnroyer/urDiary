@@ -26,6 +26,9 @@ public:
     void showInStatusBar(QString message);
     ~MainWindow();
 
+public slots:
+    void renewForm(int y, int m, int d);
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase *dbConn;

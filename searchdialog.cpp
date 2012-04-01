@@ -3,6 +3,8 @@
 #include <QSqlQueryModel>
 #include <QTextStream>
 #include <QSqlError>
+#include <QMessageBox>
+#include <QDate>
 
 SearchDialog::SearchDialog(QWidget *parent, QSqlDatabase *dbConn) :
     QDialog(parent),
@@ -10,7 +12,6 @@ SearchDialog::SearchDialog(QWidget *parent, QSqlDatabase *dbConn) :
 {
     ui->setupUi(this);
     this->dbConn = dbConn;
-
 
     // Set table view
     model = new QSqlQueryModel(this);
@@ -37,13 +38,24 @@ SearchDialog::SearchDialog(QWidget *parent, QSqlDatabase *dbConn) :
     ui->tableView->show();
 }
 
+void SearchDialog::setDate(QDate *date)
+{
+    this->selectedDate = date;
+}
+
 SearchDialog::~SearchDialog()
 {
     delete ui;
 }
 
 
-void SearchDialog::on_pushButton_clicked()
+void SearchDialog::on_tableView_doubleClicked(const QModelIndex &index)
 {
-
+    QString str = model->data( model->index(index.row(), 1 ) ).toString();
+    int y = str.mid(0,4).toInt();
+    int m = str.mid(4,2).toInt();
+    int d = str.mid(6,2).toInt();
+    this->selectedDate = new QDate(y,m,d);
+    emit done(y,m,d);
+    this->close();
 }

@@ -245,4 +245,11 @@ void MainWindow::on_action_triggered()
 {
     SearchDialog *search = new SearchDialog(this, this->dbConn);
     search->show();
+    connect(search, SIGNAL(done(int,int,int)), this, SLOT(renewForm(int,int,int)) );
+}
+
+void MainWindow::renewForm(int y, int m, int d)
+{
+    currDate = QDate(y,m,d);
+    initForm();
 }

@@ -16,14 +16,20 @@ class SearchDialog : public QDialog
 public:
     explicit SearchDialog(QWidget *parent = 0, QSqlDatabase *dbConn = NULL);
     ~SearchDialog();
+    void setDate(QDate *date);
 
 private slots:
-    void on_pushButton_clicked();
+    void on_tableView_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::SearchDialog *ui;
     QSqlDatabase *dbConn;
     QSqlQueryModel *model;
+    QDate *selectedDate;
+
+signals:
+    void done(int y, int m, int d);
+
 };
 
 #endif // SEARCHDIALOG_H

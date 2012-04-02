@@ -29,13 +29,6 @@
      <item>
       <widget class="QLineEdit" name="lineEdit"/>
      </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>OK</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>

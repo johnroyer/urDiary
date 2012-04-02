@@ -21,11 +21,16 @@ public:
 private slots:
     void on_tableView_doubleClicked(const QModelIndex &index);
 
+    void on_lineEdit_editingFinished();
+
+    void on_lineEdit_textChanged(const QString &arg1);
+
 private:
     Ui::SearchDialog *ui;
     QSqlDatabase *dbConn;
     QSqlQueryModel *model;
     QDate *selectedDate;
+    void search();
 
 signals:
     void done(int y, int m, int d);

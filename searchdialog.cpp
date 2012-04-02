@@ -60,3 +60,36 @@ void SearchDialog::on_tableView_doubleClicked(const QModelIndex &index)
     emit done(y,m,d);
     this->close();
 }
+
+void SearchDialog::on_lineEdit_editingFinished()
+{
+    search();
+    ui->lineEdit->selectAll();
+}
+
+void SearchDialog::search()
+{
+    QString tok(ui->lineEdit->text());
+    QString select = "select date, getup, anniversary, birth, fate, meet, specialDate, "
+            "field1, field2, field3, field4, field5, field6, field7, field8 from diary ";
+    QString query = "where anniversary like '%" + tok + "%' "
+            "or birth like '%" + tok + "%' "
+            "or fate like '%" + tok + "%' "
+            "or meet like '%" + tok + "%' "
+            "or specialDate like '%" + tok + "%' "
+            "or field1 like  '%" + tok + "%' "
+            "or field2 like  '%" + tok + "%' "
+            "or field3 like  '%" + tok + "%' "
+            "or field4 like  '%" + tok + "%' "
+            "or field5 like  '%" + tok + "%' "
+            "or field6 like  '%" + tok + "%' "
+            "or field7 like  '%" + tok + "%' "
+            "or field8 like  '%" + tok + "%' ";
+
+    this->model->setQuery(select + query);
+}
+
+void SearchDialog::on_lineEdit_textChanged(const QString &arg1)
+{
+    search();
+}

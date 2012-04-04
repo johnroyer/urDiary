@@ -81,6 +81,5 @@ int main(int argc, char *argv[])
     w.initForm();
     w.show();
 
-    db.close();
     return a.exec();
 }

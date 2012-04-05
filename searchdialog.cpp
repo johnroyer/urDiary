@@ -70,6 +70,7 @@ void SearchDialog::on_lineEdit_editingFinished()
 void SearchDialog::search()
 {
     QString tok(ui->lineEdit->text());
+    tok.replace("\'", "\'\'");
     QString select = "select date, getup, anniversary, birth, fate, meet, specialDate, "
             "field1, field2, field3, field4, field5, field6, field7, field8 from diary ";
     QString query = "where anniversary like '%" + tok + "%' "

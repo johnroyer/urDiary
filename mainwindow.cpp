@@ -76,11 +76,8 @@ void MainWindow::enableForm(){
 
 void MainWindow::initForm(){
     if( dbQuery != NULL ){
-//        currDate = QDate::currentDate();
         dbQuery->exec("select * from diary where date = " + currDate.toString("yyyyMMdd") );
         if( dbQuery->next() == true ){
-//            QMessageBox::about(0,"init",dbQuery->lastQuery());
-//            ui->pushButton->setText(dbQuery->value(1).toString());
             ui->plainTextEdit->setPlainText(dbQuery->value(2).toString());
             ui->plainTextEdit_2->setPlainText(dbQuery->value((3)).toString());
             ui->plainTextEdit_3->setPlainText(dbQuery->value((4)).toString());
@@ -189,7 +186,6 @@ void MainWindow::on_pushButton_clicked()
     bool res = dbQuery->exec("insert into diary "
                              "(date, getup) "
                              "values ('" + currDate.toString("yyyyMMdd") + "','" + currTime + "')");
-    //QMessageBox::about(0,"Result",dbQuery->lastQuery());
     if( res == true ){
         ui->pushButton->setDisabled(true);
         ui->pushButton->setText(currTime);
@@ -222,7 +218,6 @@ void MainWindow::on_pushButton_Today_clicked()
 void MainWindow::on_pushButton_nextDay_clicked()
 {
     currDate = currDate.addDays(1);
-//    QMessageBox::about(0,"date", currDate.toString("<center> yyyy 年 M 月 dd 日 </center>") );
     initForm();
 }
 

@@ -143,24 +143,39 @@ void MainWindow::initForm(){
 }
 
 int MainWindow::saveForm(){
-    bool stat = dbQuery->exec("update diary set "
-                  " field1 = '" + ui->plainTextEdit->toPlainText() + "', "
-                  " field2 = '" + ui->plainTextEdit_2->toPlainText() + "', "
-                  " field3 = '" + ui->plainTextEdit_3->toPlainText() + "', "
-                  " field4 = '" + ui->plainTextEdit_4->toPlainText() + "', "
-                  " field5 = '" + ui->plainTextEdit_5->toPlainText() + "', "
-                  " field6 = '" + ui->plainTextEdit_6->toPlainText() + "', "
-                  " field7 = '" + ui->plainTextEdit_7->toPlainText() + "', "
-                  " field8 = '" + ui->plainTextEdit_8->toPlainText() + "', "
-                  " anniversary = '" + ui->lineEdit_anniversary->text() + "', "
-                  " birth = '" + ui->lineEdit_birth->text() + "', "
-                  " fate = '" + ui->lineEdit_fate->text() + "', "
-                  " meet = '" + ui->lineEdit_meet->text() + "', "
-                  " specialDate = '"+ ui->lineEdit_specialDate->text() + "', "
-                  " weather = '" + ui->lineEdit_weather->text() + "' "
-                  " where date = " + currDate.toString("yyyyMMdd") );
+    dbQuery->prepare("update diary set "
+                  " field1 = :field1, "
+                  " field2 = :field2, "
+                  " field3 = :field3, "
+                  " field4 = :field4, "
+                  " field5 = :field5, "
+                  " field6 = :field6, "
+                  " field7 = :field7, "
+                  " field8 = :field8, "
+                  " anniversary = :anniversary, "
+                  " birth = :birth, "
+                  " fate = :fate, "
+                  " meet = :meet, "
+                  " specialDate = :specialDate, "
+                  " weather = :weather "
+                  " where date = :date ");
+    dbQuery->bindValue(":field1", ui->plainTextEdit->toPlainText() );
+    dbQuery->bindValue(":field2", ui->plainTextEdit_2->toPlainText() );
+    dbQuery->bindValue(":field3", ui->plainTextEdit_3->toPlainText() );
+    dbQuery->bindValue(":field4", ui->plainTextEdit_4->toPlainText() );
+    dbQuery->bindValue(":field5", ui->plainTextEdit_5->toPlainText() );
+    dbQuery->bindValue(":field6", ui->plainTextEdit_6->toPlainText() );
+    dbQuery->bindValue(":field7", ui->plainTextEdit_7->toPlainText() );
+    dbQuery->bindValue(":field8", ui->plainTextEdit_8->toPlainText() );
+    dbQuery->bindValue(":anniversary", ui->lineEdit_anniversary->text() );
+    dbQuery->bindValue(":birth", ui->lineEdit_birth->text() );
+    dbQuery->bindValue(":fate", ui->lineEdit_fate->text() );
+    dbQuery->bindValue(":meet", ui->lineEdit_meet->text() );
+    dbQuery->bindValue(":specialDate", ui->lineEdit_specialDate->text() );
+    dbQuery->bindValue(":weather", ui->lineEdit_weather->text() );
+    dbQuery->bindValue(":date", currDate.toString("yyyyMMdd") );
+    bool stat = dbQuery->exec();
     if( stat == false){
-//        QMessageBox::about(0,"save info","Failed to save \n " + dbQuery->lastQuery() );
         formModified = false;
         return 1;
     }

@@ -25,6 +25,3 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     img.qrc
-
-
-

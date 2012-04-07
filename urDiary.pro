@@ -6,7 +6,7 @@
 
 QT       += core gui sql
 
-TARGET = UrDiary
+TARGET = urDiary
 TEMPLATE = app
 
 

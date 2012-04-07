@@ -24,3 +24,5 @@ add_executable( urDiary ${urDiary_SRC} ${urDiary_HEADER_MOC}
    ${urDiary_FORMS_HEADERS} ${urDiary_RESOURCES_RCC} )
 
 target_link_libraries( urDiary ${QT_LIBRARIES} )
+
+install( TARGETS urDiary DESTINATION bin )

@@ -20,9 +20,14 @@ qt4_add_resources( urDiary_RESOURCES_RCC ${urDiary_RESOURCES} )
 include( ${QT_USE_FILE} )
 add_definitions( ${QT_DEFINITIONS} )
 
-add_executable( urDiary ${urDiary_SRC} ${urDiary_HEADER_MOC} 
-   ${urDiary_FORMS_HEADERS} ${urDiary_RESOURCES_RCC} )
-
-target_link_libraries( urDiary ${QT_LIBRARIES} )
+if( WIN32 )
+   add_executable( urDiary WIN32 ${urDiary_SRC} ${urDiary_HEADER_MOC} 
+      ${urDiary_FORMS_HEADERS} ${urDiary_RESOURCES_RCC} )
+   target_link_libraries( urDiary ${QT_LIBRARIES} ${QT_QTMAIN_LIBRARY} )
+else()
+   add_executable( urDiary ${urDiary_SRC} ${urDiary_HEADER_MOC} 
+      ${urDiary_FORMS_HEADERS} ${urDiary_RESOURCES_RCC} )
+   target_link_libraries( urDiary ${QT_LIBRARIES} )
+endif()
 
 install( TARGETS urDiary DESTINATION bin )

@@ -32,4 +32,5 @@ else()
 
 endif()
 
-install( TARGETS urDiary DESTINATION bin )
+install( TARGETS urDiary DESTINATION /opt/urDiary  )
+

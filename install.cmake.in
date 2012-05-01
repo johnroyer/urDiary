@@ -1,0 +1,7 @@
+set(DIRS "@QT_LIBRARY_DIR@")
+
+include( BundleUtilities )
+
+#file(WRITE "${CMAKE_INSTALL_PREFIX}/bin/qt.conf" "")
+fixup_bundle( "/opt/urDiary/urDiary" "" "${DIRS}" )
+

@@ -32,5 +32,10 @@ else()
 
 endif()
 
-install( TARGETS urDiary DESTINATION /opt/urDiary  )
+set( DIRS "${QT_LIBRARY_DIRS}" )
+
+install( TARGETS urDiary 
+   RUNTIME DESTINATION /opt/urDiary  )
+configure_file("install.cmake.in" "${CMAKE_BINARY_DIR}/install.cmake" @ONLY)
+install(SCRIPT "${CMAKE_BINARY_DIR}/install.cmake" )
 
